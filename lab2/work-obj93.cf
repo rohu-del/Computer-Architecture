@@ -1,0 +1,25 @@
+v 4
+file . "gates_tb.vhd" "477217268c639722ef77f7b9d7f6e96b1dade42e" "20260521085307.926":
+  entity gates_tb at 1( 0) + 0 on 45;
+  architecture simulation of gates_tb at 7( 91) + 0 on 46;
+file . "not_gate.vhd" "74026c22245180dcf0639a3e67cb4e9c552e715e" "20260521085251.593":
+  entity not_gate at 1( 0) + 0 on 37;
+  architecture dataflow of not_gate at 9( 145) + 0 on 38;
+file . "xnor_gate.vhd" "3bd5c0c7ea7686090d8ae53eba11de1506c99378" "20260521085304.145":
+  entity xnor_gate at 1( 0) + 0 on 43;
+  architecture dataflow of xnor_gate at 10( 167) + 0 on 44;
+file . "nand_gate.vhd" "6d4221ef05db2d812d800b88aba05fdefaf13338" "20260521085247.911":
+  entity nand_gate at 1( 0) + 0 on 35;
+  architecture dataflow of nand_gate at 10( 167) + 0 on 36;
+file . "and_gate.vhd" "74904d6049b797b2613bd86b121e9854201e9d68" "20260521085224.441":
+  entity and_gate at 1( 0) + 0 on 31;
+  architecture dataflow of and_gate at 10( 165) + 0 on 32;
+file . "nor_gate.vhd" "e83fca6af988b109d81abb9695223f0bf6efe5d7" "20260521085240.952":
+  entity nor_gate at 1( 0) + 0 on 33;
+  architecture dataflow of nor_gate at 10( 165) + 0 on 34;
+file . "xor_gate.vhd" "0f44e75404473f8540b8f64134bd1fb56255f417" "20260521085301.403":
+  entity xor_gate at 1( 0) + 0 on 41;
+  architecture dataflow of xor_gate at 10( 165) + 0 on 42;
+file . "or_gate.vhd" "e9055cc32a2907dd65d33e6bf79e772b4ca23bb0" "20260521085255.158":
+  entity or_gate at 3( 4) + 0 on 39;
+  architecture dataflow of or_gate at 12( 167) + 0 on 40;
