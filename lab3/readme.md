@@ -42,9 +42,9 @@ A **decoder** converts an \(n\)-bit binary input into one of \(2^n\) output line
 ---
 
 ## Output
-![](encoder.png)
+![image](encoder.png)
 Encoder
-![](decoder.png)
+![image](decoder.png)
 Decoder
 ## 💬 Discussion
 - The **encoder** compresses multiple input signals into a smaller binary representation, which is useful in digital systems where efficiency is required.  
