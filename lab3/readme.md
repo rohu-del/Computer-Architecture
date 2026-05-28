@@ -43,9 +43,12 @@ A **decoder** converts an \(n\)-bit binary input into one of \(2^n\) output line
 
 ## Output
 ![image](encoder.png)
-Encoder
+**Encoder**
+
+
 ![image](decoder.png)
-Decoder
+**Decoder**
+
 ## 💬 Discussion
 - The **encoder** compresses multiple input signals into a smaller binary representation, which is useful in digital systems where efficiency is required.  
 - The **priority encoder** ensures that when multiple inputs are active, the highest-priority input dominates, preventing ambiguity in outputs.  
