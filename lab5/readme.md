@@ -23,24 +23,20 @@ The Boolean equations governing the outputs are:
 - **Equal (EQ):**
 
 
-$EQ = \overline(A_1 \oplus B_1) \cdot \overline(A_0 \oplus B_0)$
+$EQ = \overline{A_1 \oplus B_1} \cdot \overline{A_0 \oplus B_0}$
 
 
 - **Greater Than (GT):**
 
 
-$
-GT = A_1\overline{B_1} + (A_1 \odot B_1) \cdot A_0\overline{B_0}
-$
+$GT = A_1\overline{B_1} + (A_1 \odot B_1) \cdot A_0\overline{B_0}$
 
 
 
 - **Less Than (LT):**
 
 
-$
-LT = \overline{A_1}B_1 + (A_1 \odot B_1) \cdot \overline{A_0}B_0
-$
+$LT = \overline{A_1}B_1 + (A_1 \odot B_1) \cdot \overline{A_0}B_0$
 
 
 
