@@ -1,0 +1,67 @@
+# Lab 5: VHDL Code for Combinational Circuits – Comparator
+
+## Objective
+- To design and simulate a 2-bit magnitude comparator in VHDL.  
+- To understand how comparison operations are implemented in hardware.
+
+## Theory
+A magnitude comparator compares two binary numbers and produces three output signals:
+- **EQ (Equal):** HIGH when A = B  
+- **GT (Greater Than):** HIGH when A > B  
+- **LT (Less Than):** HIGH when A < B  
+
+For a 2-bit comparator with inputs A = A1A0 and B = B1B0:
+
+
+
+\[
+EQ = (A1 \oplus B1)' \cdot (A0 \oplus B0)'
+\]
+
+
+
+
+
+\[
+GT = (A1 \cdot \overline{B1}) + (A1 \oplus B1)' \cdot (A0 \cdot \overline{B0})
+\]
+
+
+
+
+
+\[
+LT = (\overline{A1} \cdot B1) + (A1 \oplus B1)' \cdot (\overline{A0} \cdot B0)
+\]
+
+
+
+## Expected Output
+
+| A  | B  | EQ | GT | LT |
+|----|----|----|----|----|
+| 00 | 00 | 1  | 0  | 0  |
+| 01 | 00 | 0  | 1  | 0  |
+| 00 | 01 | 0  | 0  | 1  |
+| 10 | 11 | 0  | 0  | 1  |
+| 11 | 10 | 0  | 1  | 0  |
+| 11 | 11 | 1  | 0  | 0  |
+
+
+## Output
+
+![image](comparator.png)
+Comparator
+
+## Discussion
+- The comparator design ensures that only one of the outputs (EQ, GT, LT) is active at a time, making the signals mutually exclusive.  
+- The theoretical Boolean expressions for EQ, GT, and LT match the expected truth table.  
+- Simulation results confirm that the comparator behaves correctly for all tested input pairs.  
+- This experiment highlights how simple logical operations can be combined to implement comparison functionality in digital circuits.  
+- Understanding comparators is fundamental, as they are widely used in processors, sorting circuits, and digital decision-making systems.
+
+## Conclusion
+- A 2-bit magnitude comparator was successfully designed and simulated in VHDL.  
+- The comparator correctly identifies equality, greater-than, and less-than conditions.  
+- The truth table and simulation results matched the theoretical expectations, validating the design.  
+- This lab provided practical insight into how comparison operations are implemented in hardware using VHDL, reinforcing the connection between Boolean algebra and digital circuit design.

@@ -15,7 +15,7 @@ begin
             D => D,
             S => S,
             Y => Y
-        );
+        );r 
 
     -- Stimulus process
     STIMULUS : process
