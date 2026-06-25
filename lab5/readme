@@ -10,30 +10,36 @@ A magnitude comparator compares two binary numbers and produces three output sig
 - **GT (Greater Than):** HIGH when A > B  
 - **LT (Less Than):** HIGH when A < B  
 
-For a 2-bit comparator with inputs A = A1A0 and B = B1B0:
+For a 2-bit comparator with inputs **A = A1A0** and **B = B1B0**:
 
+- **Equal (EQ):**
 
 
 \[
-EQ = (A1 \oplus B1)' \cdot (A0 \oplus B0)'
+EQ = A1 \oplus B1 \cdot A0 \oplus B0
 \]
 
 
 
+- **Greater Than (GT):**
 
 
 \[
-GT = (A1 \cdot \overline{B1}) + (A1 \oplus B1)' \cdot (A0 \cdot \overline{B0})
+GT = A1B1 + (A1 \oplus B1) \cdot A0B0
 \]
 
 
 
+- **Less Than (LT):**
 
 
 \[
-LT = (\overline{A1} \cdot B1) + (A1 \oplus B1)' \cdot (\overline{A0} \cdot B0)
+LT = A1B1 + (A1 \oplus B1) \cdot A0B0
 \]
 
+## Output
+
+![img](comparator.png)
 
 
 ## Expected Output
@@ -47,18 +53,12 @@ LT = (\overline{A1} \cdot B1) + (A1 \oplus B1)' \cdot (\overline{A0} \cdot B0)
 | 11 | 10 | 0  | 1  | 0  |
 | 11 | 11 | 1  | 0  | 0  |
 
-
-## Output
-
-![image](comparator.png)
-Comparator
-
 ## Discussion
-- The comparator design ensures that only one of the outputs (EQ, GT, LT) is active at a time, making the signals mutually exclusive.  
+- The comparator ensures that only one of the outputs (EQ, GT, LT) is active at a time, making the signals mutually exclusive.  
 - The theoretical Boolean expressions for EQ, GT, and LT match the expected truth table.  
 - Simulation results confirm that the comparator behaves correctly for all tested input pairs.  
-- This experiment highlights how simple logical operations can be combined to implement comparison functionality in digital circuits.  
-- Understanding comparators is fundamental, as they are widely used in processors, sorting circuits, and digital decision-making systems.
+- This experiment highlights how logical operations such as XOR, AND, and OR can be combined to implement comparison functionality in digital circuits.  
+- Magnitude comparators are widely used in processors, sorting circuits, and digital systems where decision-making based on binary values is required.
 
 ## Conclusion
 - A 2-bit magnitude comparator was successfully designed and simulated in VHDL.  
