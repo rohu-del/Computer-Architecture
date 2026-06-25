@@ -1,67 +1,47 @@
-# Lab 5: VHDL Code for Combinational Circuits – Comparator
+# Lab 5: VHDL Code for Combinational Circuits – Magnitude Comparator
 
 ## Objective
-- To design and simulate a 2-bit magnitude comparator in VHDL.  
-- To understand how comparison operations are implemented in hardware.
+* To design and simulate a 2-bit magnitude comparator using VHDL.
+* To understand how hardware comparison operations are implemented using logic gates and concurrent statements.
+
+---
 
 ## Theory
-A magnitude comparator compares two binary numbers and produces three output signals:
-- **EQ (Equal):** HIGH when A = B  
-- **GT (Greater Than):** HIGH when A > B  
-- **LT (Less Than):** HIGH when A < B  
+A magnitude comparator is a combinational circuit that compares two binary numbers, $A$ and $B$, to determine their relative magnitude. It generates three distinct binary outputs: **EQ** (Equal), **GT** (Greater Than), and **LT** (Less Than).
 
-For a 2-bit comparator with inputs **A = A1A0** and **B = B1B0**:
+For a 2-bit comparator, the inputs are defined as $A = A_1A_0$ and $B = B_1B_0$. The formalized Boolean equations governing the outputs are:
 
-- **Equal (EQ):**
+* **Equal (EQ):** Activates only when all corresponding bits match.
+  $$EQ = (A_1 \odot B_1) \cdot (A_0 \odot B_0)$$
+* **Greater Than (GT):** Activates if $A$ is strictly greater than $B$.
+  $$GT = A_1\overline{B_1} + (A_1 \odot B_1) \cdot A_0\overline{B_0}$$
+* **Less Than (LT):** Activates if $A$ is strictly less than $B$.
+  $$LT = \overline{A_1}B_1 + (A_1 \odot B_1) \cdot \overline{A_0}B_0$$
 
+*(Note: $\odot$ denotes the XNOR operation, representing bitwise equality, which can also be written as $\overline{A \oplus B}$.)*
 
-\[
-EQ = A1 \oplus B1 \cdot A0 \oplus B0
-\]
-
-
-
-- **Greater Than (GT):**
-
-
-\[
-GT = A1B1 + (A1 \oplus B1) \cdot A0B0
-\]
-
-
-
-- **Less Than (LT):**
-
-
-\[
-LT = A1B1 + (A1 \oplus B1) \cdot A0B0
-\]
+---
 
 ## Output
 
 ![img](comparator.png)
 
-
-## Expected Output
-
-| A  | B  | EQ | GT | LT |
-|----|----|----|----|----|
-| 00 | 00 | 1  | 0  | 0  |
-| 01 | 00 | 0  | 1  | 0  |
-| 00 | 01 | 0  | 0  | 1  |
-| 10 | 11 | 0  | 0  | 1  |
-| 11 | 10 | 0  | 1  | 0  |
-| 11 | 11 | 1  | 0  | 0  |
-
 ## Discussion
-- The comparator ensures that only one of the outputs (EQ, GT, LT) is active at a time, making the signals mutually exclusive.  
-- The theoretical Boolean expressions for EQ, GT, and LT match the expected truth table.  
-- Simulation results confirm that the comparator behaves correctly for all tested input pairs.  
-- This experiment highlights how logical operations such as XOR, AND, and OR can be combined to implement comparison functionality in digital circuits.  
-- Magnitude comparators are widely used in processors, sorting circuits, and digital systems where decision-making based on binary values is required.
+
+The logic design of a 2-bit magnitude comparator highlights how algebraic Boolean expressions directly dictate the layout of physical digital hardware. 
+
+### Analytical Breakdown
+1. **Bit-by-Bit Evaluation:** The circuit processes the inputs hierarchically. It first checks the Most Significant Bits (MSBs), $A_1$ and $B_1$. If $A_1 > B_1$ or $A_1 < B_1$, the outcome is decided immediately, overriding the Least Significant Bits (LSBs).
+2. **Cascading Logic:** The LSBs ($A_0$ and $B_0$) are only factored into the **GT** and **LT** expressions if the MSBs are completely equal ($eq1 = 1$). This cascading dependency matches the behavior seen in ripple-carry structures or sequential number parsing.
+3. **VHDL Concurrency:** By utilizing dataflow modeling with concurrent signal assignments, the synthesis tool maps these logical expressions directly onto localized Look-Up Tables (LUTs) in an FPGA, ensuring minimal propagation delay.
+
+### Observation Strategy
+During simulation, the circuit yields a predictable state table. For any given 4-bit combined input ($A_1A_0B_1B_0$), exactly one of the three outputs (**EQ**, **GT**, **LT**) will hold a logic high ('1') value, proving they are mutually exclusive.
+
+---
 
 ## Conclusion
-- A 2-bit magnitude comparator was successfully designed and simulated in VHDL.  
-- The comparator correctly identifies equality, greater-than, and less-than conditions.  
-- The truth table and simulation results matched the theoretical expectations, validating the design.  
-- This lab provided practical insight into how comparison operations are implemented in hardware using VHDL, reinforcing the connection between Boolean algebra and digital circuit design.
+
+In this lab, a 2-bit magnitude comparator was successfully designed and modeled using dataflow VHDL. The simulation verified that the behavioral execution of the digital design matches the expected mathematical Boolean expressions. 
+
+Through this experiment, the direct relationship between logical expressions and concurrent hardware execution was demonstrated. It underscored how structural optimization, such as using intermediate internal signals like `eq1` and `eq0`, reduces redundant logic and improves code readability. This foundational design forms the basis for constructing larger $N$-bit comparators, either via behavioral conditional statements (`when/else`) or by cascading smaller bit-width blocks structurally.
