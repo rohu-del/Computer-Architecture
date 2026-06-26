@@ -14,7 +14,7 @@ For a 2-bit comparator, the inputs are defined as:
 
 
 
-$ A = A_1A_0, \quad B = B_1B_0$
+$A = A_1A_0, \quad B = B_1B_0$
 
 
 
