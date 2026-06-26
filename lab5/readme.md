@@ -40,7 +40,6 @@ $LT = \overline{A_1}B_1 + (A_1 \odot B_1) \cdot \overline{A_0}B_0$
 
 
 
-*(Note: $\odot$ denotes the XNOR operation, representing bitwise equality, equivalent to $\overline{A \oplus B}$.)*
 
 ---
 
